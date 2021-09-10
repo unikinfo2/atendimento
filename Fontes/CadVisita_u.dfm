@@ -1,0 +1,474 @@
+inherited CadVisita_f: TCadVisita_f
+  Left = 201
+  Top = 59
+  Width = 520
+  Height = 485
+  Caption = 'Agendamento de Compromissos'
+  OldCreateOrder = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel [0]
+    Left = 8
+    Top = 44
+    Width = 32
+    Height = 13
+    Caption = 'Cliente'
+  end
+  object sbPesq: TSpeedButton [1]
+    Left = 85
+    Top = 60
+    Width = 23
+    Height = 22
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
+      300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
+      330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
+      333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
+      339977FF777777773377000BFB03333333337773FF733333333F333000333333
+      3300333777333333337733333333333333003333333333333377333333333333
+      333333333333333333FF33333333333330003333333333333777333333333333
+      3000333333333333377733333333333333333333333333333333}
+    NumGlyphs = 2
+    OnClick = sbPesqClick
+  end
+  object Label2: TLabel [2]
+    Left = 111
+    Top = 44
+    Width = 96
+    Height = 13
+    Caption = 'Nome/Raz'#227'o Social'
+  end
+  object Label3: TLabel [3]
+    Left = 9
+    Top = 128
+    Width = 112
+    Height = 13
+    Caption = 'Motivo do Compromisso'
+  end
+  object Label4: TLabel [4]
+    Left = 8
+    Top = 87
+    Width = 37
+    Height = 13
+    Caption = 'Contato'
+  end
+  object SpeedButton1: TSpeedButton [5]
+    Left = 92
+    Top = 325
+    Width = 24
+    Height = 22
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
+      300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
+      330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
+      333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
+      339977FF777777773377000BFB03333333337773FF733333333F333000333333
+      3300333777333333337733333333333333003333333333333377333333333333
+      333333333333333333FF33333333333330003333333333333777333333333333
+      3000333333333333377733333333333333333333333333333333}
+    NumGlyphs = 2
+    OnClick = SpeedButton1Click
+  end
+  object Label5: TLabel [6]
+    Left = 119
+    Top = 311
+    Width = 28
+    Height = 13
+    Caption = 'Nome'
+  end
+  object Label6: TLabel [7]
+    Left = 8
+    Top = 310
+    Width = 63
+    Height = 13
+    Caption = 'C'#243'digo Func.'
+  end
+  object Label7: TLabel [8]
+    Left = 8
+    Top = 3
+    Width = 25
+    Height = 13
+    Caption = 'Visita'
+  end
+  object SpeedButton2: TSpeedButton [9]
+    Left = 86
+    Top = 19
+    Width = 23
+    Height = 22
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333333FF33333333333330003FF3FFFFF3333777003000003333
+      300077F777773F333777E00BFBFB033333337773333F7F33333FE0BFBF000333
+      330077F3337773F33377E0FBFBFBF033330077F3333FF7FFF377E0BFBF000000
+      333377F3337777773F3FE0FBFBFBFBFB039977F33FFFFFFF7377E0BF00000000
+      339977FF777777773377000BFB03333333337773FF733333333F333000333333
+      3300333777333333337733333333333333003333333333333377333333333333
+      333333333333333333FF33333333333330003333333333333777333333333333
+      3000333333333333377733333333333333333333333333333333}
+    NumGlyphs = 2
+    OnClick = SpeedButton2Click
+  end
+  object Label8: TLabel [10]
+    Left = 216
+    Top = 87
+    Width = 123
+    Height = 13
+    Caption = 'Data e Hora Compromisso'
+  end
+  object Label9: TLabel [11]
+    Left = 360
+    Top = 87
+    Width = 105
+    Height = 13
+    Caption = 'Data Prevista Retorno'
+  end
+  object Label10: TLabel [12]
+    Left = 9
+    Top = 359
+    Width = 101
+    Height = 13
+    Caption = 'Tipo de Compromisso'
+  end
+  object Label11: TLabel [13]
+    Left = 9
+    Top = 165
+    Width = 84
+    Height = 13
+    Caption = 'Motivo Detalhado'
+  end
+  object medCliente: TMaskEdit [14]
+    Left = 8
+    Top = 60
+    Width = 73
+    Height = 21
+    Enabled = False
+    EditMask = '#########;0; '
+    MaxLength = 9
+    TabOrder = 1
+    OnExit = medClienteExit
+  end
+  object edtNomeCli: TEdit [15]
+    Left = 111
+    Top = 60
+    Width = 390
+    Height = 21
+    Color = clMenu
+    Enabled = False
+    TabOrder = 2
+  end
+  object DBMemo1: TDBMemo [16]
+    Left = 9
+    Top = 178
+    Width = 493
+    Height = 127
+    DataField = 'DETALHE_VISTA'
+    DataSource = dsVisita
+    MaxLength = 900
+    TabOrder = 7
+  end
+  object DBEdit1: TDBEdit [17]
+    Left = 8
+    Top = 102
+    Width = 197
+    Height = 21
+    DataField = 'CONTATO_VISITA'
+    DataSource = dsVisita
+    TabOrder = 3
+  end
+  object edtCodigo: TEdit [18]
+    Left = 8
+    Top = 325
+    Width = 81
+    Height = 21
+    CharCase = ecUpperCase
+    Enabled = False
+    TabOrder = 8
+    OnExit = edtCodigoExit
+  end
+  object medVisita: TMaskEdit [19]
+    Left = 8
+    Top = 19
+    Width = 73
+    Height = 21
+    EditMask = '#########;0; '
+    MaxLength = 9
+    TabOrder = 0
+    OnExit = medVisitaExit
+  end
+  object BitBtn1: TBitBtn [20]
+    Left = 177
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Grava'
+    TabOrder = 12
+    OnClick = BitBtn1Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333330070
+      7700333333337777777733333333008088003333333377F73377333333330088
+      88003333333377FFFF7733333333000000003FFFFFFF77777777000000000000
+      000077777777777777770FFFFFFF0FFFFFF07F3333337F3333370FFFFFFF0FFF
+      FFF07F3FF3FF7FFFFFF70F00F0080CCC9CC07F773773777777770FFFFFFFF039
+      99337F3FFFF3F7F777F30F0000F0F09999937F7777373777777F0FFFFFFFF999
+      99997F3FF3FFF77777770F00F000003999337F773777773777F30FFFF0FF0339
+      99337F3FF7F3733777F30F08F0F0337999337F7737F73F7777330FFFF0039999
+      93337FFFF7737777733300000033333333337777773333333333}
+    NumGlyphs = 2
+  end
+  object BitBtn2: TBitBtn [21]
+    Left = 263
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Cancelar'
+    TabOrder = 13
+    OnClick = BitBtn2Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500005000555
+      555557777F777555F55500000000555055557777777755F75555005500055055
+      555577F5777F57555555005550055555555577FF577F5FF55555500550050055
+      5555577FF77577FF555555005050110555555577F757777FF555555505099910
+      555555FF75777777FF555005550999910555577F5F77777775F5500505509990
+      3055577F75F77777575F55005055090B030555775755777575755555555550B0
+      B03055555F555757575755550555550B0B335555755555757555555555555550
+      BBB35555F55555575F555550555555550BBB55575555555575F5555555555555
+      50BB555555555555575F555555555555550B5555555555555575}
+    NumGlyphs = 2
+  end
+  object BitBtn5: TBitBtn [22]
+    Left = 350
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = '&Apagar'
+    TabOrder = 14
+    OnClick = BitBtn5Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+      55555FFFFFFF5F55FFF5777777757559995777777775755777F7555555555550
+      305555555555FF57F7F555555550055BB0555555555775F777F55555550FB000
+      005555555575577777F5555550FB0BF0F05555555755755757F555550FBFBF0F
+      B05555557F55557557F555550BFBF0FB005555557F55575577F555500FBFBFB0
+      B05555577F555557F7F5550E0BFBFB00B055557575F55577F7F550EEE0BFB0B0
+      B05557FF575F5757F7F5000EEE0BFBF0B055777FF575FFF7F7F50000EEE00000
+      B0557777FF577777F7F500000E055550805577777F7555575755500000555555
+      05555777775555557F5555000555555505555577755555557555}
+    NumGlyphs = 2
+  end
+  object edtFunc: TEdit [23]
+    Left = 118
+    Top = 325
+    Width = 378
+    Height = 21
+    Color = clMenu
+    Enabled = False
+    TabOrder = 9
+  end
+  object BitBtn3: TBitBtn [24]
+    Left = 90
+    Top = 406
+    Width = 75
+    Height = 25
+    Caption = 'Nova'
+    TabOrder = 15
+    OnClick = BitBtn3Click
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000130B0000130B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF0033333333B333
+      333B33FF33337F3333F73BB3777BB7777BB3377FFFF77FFFF77333B000000000
+      0B3333777777777777333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+      07333337F33333337F333330FFFFFFFF07333337F33333337F333330FFFFFFFF
+      07333FF7F33333337FFFBBB0FFFFFFFF0BB37777F3333333777F3BB0FFFFFFFF
+      0BBB3777F3333FFF77773330FFFF000003333337F333777773333330FFFF0FF0
+      33333337F3337F37F3333330FFFF0F0B33333337F3337F77FF333330FFFF003B
+      B3333337FFFF77377FF333B000000333BB33337777777F3377FF3BB3333BB333
+      3BB33773333773333773B333333B3333333B7333333733333337}
+    NumGlyphs = 2
+  end
+  object rgStatus: TDBRadioGroup [25]
+    Left = 166
+    Top = 354
+    Width = 329
+    Height = 41
+    Caption = ' Status do Compromisso '
+    Columns = 4
+    DataField = 'STATUS_VISITA'
+    DataSource = dsVisita
+    Items.Strings = (
+      'Aberto'
+      'Fechada'
+      'Adiada'
+      'Cancelada')
+    TabOrder = 11
+    Values.Strings = (
+      'A'
+      'F'
+      'D'
+      'C')
+  end
+  object DBEdit2: TDBEdit [26]
+    Left = 216
+    Top = 102
+    Width = 141
+    Height = 21
+    DataField = 'DT_VISITA'
+    DataSource = dsVisita
+    TabOrder = 4
+  end
+  object DBEdit3: TDBEdit [27]
+    Left = 360
+    Top = 102
+    Width = 141
+    Height = 21
+    DataField = 'DT_PREV_RET'
+    DataSource = dsVisita
+    TabOrder = 5
+  end
+  object rgCompromisso: TRxDBComboBox [28]
+    Left = 11
+    Top = 375
+    Width = 151
+    Height = 21
+    Style = csDropDownList
+    DataField = 'TIPO_COMPROMISSO'
+    DataSource = dsVisita
+    EnableValues = False
+    ItemHeight = 13
+    Items.Strings = (
+      'Visita'
+      'Fiscaliza'#231#227'o'
+      'Homologa'#231#227'o')
+    TabOrder = 10
+    Values.Strings = (
+      'V'
+      'F'
+      'H')
+  end
+  object DBMemo2: TDBMemo [29]
+    Left = 9
+    Top = 142
+    Width = 493
+    Height = 20
+    DataField = 'MOTIVO_VISITA'
+    DataSource = dsVisita
+    MaxLength = 900
+    TabOrder = 6
+    WordWrap = False
+    OnKeyPress = DBMemo2KeyPress
+  end
+  inherited submenu: TMainMenu
+    Left = 308
+    Top = 20
+  end
+  inherited Calculator1: TRxCalculator
+    Left = 36
+    Top = 398
+  end
+  object dsVisita: TDataSource
+    DataSet = qryVisita
+    Left = 348
+    Top = 20
+  end
+  object qryVisita: TQuery
+    DatabaseName = 'db'
+    RequestLive = True
+    SQL.Strings = (
+      'SELECT * FROM GC_VISITA WHERE COD_VISITA = :COD_VISITA')
+    Left = 380
+    Top = 16
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'COD_VISITA'
+        ParamType = ptUnknown
+      end>
+    object qryVisitaCOD_VISITA: TIntegerField
+      FieldName = 'COD_VISITA'
+      Origin = 'DB.GC_VISITA.COD_VISITA'
+    end
+    object qryVisitaCOD_FUNC: TIntegerField
+      FieldName = 'COD_FUNC'
+      Origin = 'DB.GC_VISITA.COD_FUNC'
+    end
+    object qryVisitaDT_VISITA: TDateTimeField
+      FieldName = 'DT_VISITA'
+      Origin = 'DB.GC_VISITA.DT_VISITA'
+      DisplayFormat = 'dd/mm/yyyy hh:nn'
+      EditMask = '99/99/9999 99:99;1; '
+    end
+    object qryVisitaDT_PREV_RET: TDateTimeField
+      FieldName = 'DT_PREV_RET'
+      Origin = 'DB.GC_VISITA.DT_PREV_RET'
+      DisplayFormat = 'dd/mm/yyyy hh:nn'
+      EditMask = '99/99/9999 99:99;1; '
+    end
+    object qryVisitaMOTIVO_VISITA: TMemoField
+      FieldName = 'MOTIVO_VISITA'
+      Origin = 'DB.GC_VISITA.MOTIVO_VISITA'
+      BlobType = ftMemo
+      Size = 1000
+    end
+    object qryVisitaOBS_VISITA: TStringField
+      FieldName = 'OBS_VISITA'
+      Origin = 'DB.GC_VISITA.OBS_VISITA'
+      Size = 255
+    end
+    object qryVisitaCONTATO_VISITA: TStringField
+      FieldName = 'CONTATO_VISITA'
+      Origin = 'DB.GC_VISITA.CONTATO_VISITA'
+      Size = 50
+    end
+    object qryVisitaSTATUS_VISITA: TStringField
+      FieldName = 'STATUS_VISITA'
+      Origin = 'DB.GC_VISITA.STATUS_VISITA'
+      Size = 1
+    end
+    object qryVisitaCOD_FUNC_CAD_VIS: TIntegerField
+      FieldName = 'COD_FUNC_CAD_VIS'
+      Origin = 'DB.GC_VISITA.COD_FUNC_CAD_VIS'
+    end
+    object qryVisitaCOD_CLIENTE: TIntegerField
+      FieldName = 'COD_CLIENTE'
+      Origin = 'DB.GC_VISITA.COD_CLIENTE'
+    end
+    object qryVisitaTIPO_COMPROMISSO: TStringField
+      FieldName = 'TIPO_COMPROMISSO'
+      Origin = 'DB.GC_VISITA.TIPO_COMPROMISSO'
+      Size = 1
+    end
+    object qryVisitaDETALHE_VISTA: TMemoField
+      FieldName = 'DETALHE_VISTA'
+      Origin = 'DB.GC_VISITA.DETALHE_VISTA'
+      BlobType = ftMemo
+      Size = 1000
+    end
+  end
+  object qryAux: TQuery
+    DatabaseName = 'db'
+    RequestLive = True
+    Left = 424
+    Top = 20
+  end
+end

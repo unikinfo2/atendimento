@@ -1,0 +1,96 @@
+/* GC_Atendimento */
+alter table gc_atendimento add "TIPO_ATEND" VARCHAR(1);
+alter table gc_atendimento add "DT_COMPET_INI" TIMESTAMP;
+alter table gc_atendimento add "DT_COMPET_FIN" TIMESTAMP;
+alter table gc_atendimento add "DT_VENCTO" TIMESTAMP;
+alter table gc_atendimento add "VALOR_DOCTO" DOUBLE PRECISION;
+alter table gc_atendimento add "COD_DOCTO" NUMERIC(9,0);
+alter table gc_atendimento add "NOME_CLIFUNC" VARCHAR(40);
+alter table gc_atendimento add foreign key ("COD_DOCTO") references gc_documento;
+alter table gc_atendimento add "COD_FUNC" NUMERIC(9,0);
+alter table gc_atendimento add foreign key ("COD_FUNC") references gc_funcionario;
+
+/* GC_AGENDA */
+CREATE TABLE GC_AGENDA (
+       COD_CONTATO          NUMERIC(9,0) NOT NULL,
+       NOME_CONTATO         VARCHAR(40),
+       EMPRESA_CONTATO      VARCHAR(40),
+       EMAIL_CONTATO        VARCHAR(50),
+       FONE1_CONTATO        VARCHAR(15),
+       FONE2_CONTATO        VARCHAR(15),
+       FONE3_CONTATO        VARCHAR(15),
+       FONE4_CONTATO        VARCHAR(15),
+       OBS_CONTATO          VARCHAR(255),
+       PRIMARY KEY (COD_CONTATO)
+);
+
+CREATE UNIQUE INDEX XPKGC_AGENDA ON GC_AGENDA
+(
+       COD_CONTATO
+);
+
+
+/* GC_EMAIL_CLI */
+CREATE TABLE GC_EMAIL_CLI (
+       COD_EMAIL            NUMERIC(9,0) NOT NULL,
+       EMAIL_CLI_CONT       NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0),
+       COD_CONTATO          NUMERIC(9,0),
+       PRIMARY KEY (email_cli_cont),
+       FOREIGN KEY (COD_CONTATO)
+                             REFERENCES GC_AGENDA,
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE,
+       FOREIGN KEY (COD_EMAIL)
+                             REFERENCES GC_EMAIL
+);
+CREATE UNIQUE INDEX XPKGC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       email_cli_cont
+);
+
+CREATE INDEX XIF24GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_CONTATO
+);
+
+CREATE INDEX XIF18GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_EMAIL
+);
+
+CREATE INDEX XIF19GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_CLIENTE
+);
+
+/* GC_CLIENTE_FUNC */
+CREATE TABLE GC_CLIENTE_FUNC (
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       COD_CLI_FUNC         NUMERIC(9,0) NOT NULL,
+       NOME_CLI_FUNC        VARCHAR(40),
+       PRIMARY KEY (COD_CLI_FUNC),
+       FOREIGN KEY (COD_CLIENTE) references GC_CLIENTE
+);
+
+CREATE UNIQUE INDEX XPKGC_CLIENTE_FUNC ON GC_CLIENTE_FUNC
+(
+       COD_CLI_FUNC,
+       COD_CLIENTE
+);
+
+/* GC_FICHA_AND - FICHA DE ANDAMENTO */
+CREATE TABLE "GC_FICHA_AND"
+(
+  "COD_FICHA"	   NUMERIC(9, 0) NOT NULL,
+  "COD_ANDAMENTO"  NUMERIC(9, 0) NOT NULL,
+  "DT_ANDAMENTO"   TIMESTAMP,
+  "DT_PREV_RET"    TIMESTAMP,
+  "DT_FECHA"       TIMESTAMP,
+  "DESC_ANDAMENTO" VARCHAR(150),
+  "COD_FUNC"       NUMERIC(9,0),
+  PRIMARY KEY ("COD_FICHA", "COD_ANDAMENTO")
+);
+ALTER TABLE "GC_FICHA_AND" ADD FOREIGN KEY ("COD_FICHA") REFERENCES GC_FICHA ("COD_FICHA");
+ALTER TABLE "GC_FICHA_AND" ADD FOREIGN KEY ("COD_FUNC") REFERENCES GC_FUNCIONARIO ("COD_FUNC");
+

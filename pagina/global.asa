@@ -1,0 +1,16 @@
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+
+Option Explicit
+
+Sub Application_OnStart
+  application("Alias")   = "dbObra"
+  application("usuario") = ""
+  application("senha")   = ""
+End Sub
+
+Sub Session_OnStart
+  'Session("usuario") = ""
+  'Session("senha") = ""
+End Sub
+
+</SCRIPT>

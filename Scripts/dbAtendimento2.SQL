@@ -1,0 +1,291 @@
+
+CREATE TABLE GC_AGENDA (
+       COD_CONTATO          NUMERIC(9,0) NOT NULL,
+       NOME_CONTATO         VARCHAR(40),
+       EMPRESA_CONTATO      VARCHAR(40),
+       EMAIL_CONTATO        VARCHAR(50),
+       FONE1_CONTATO        VARCHAR(15),
+       FONE2_CONTATO        VARCHAR(15),
+       FONE3_CONTATO        VARCHAR(15),
+       FONE4_CONTATO        VARCHAR(15),
+       OBS_CONTATO          VARCHAR(255),
+       PRIMARY KEY (COD_CONTATO)
+);
+
+CREATE UNIQUE INDEX XPKGC_AGENDA ON GC_AGENDA
+(
+       COD_CONTATO
+);
+
+
+CREATE TABLE GC_DEPARTAMENTO (
+       COD_DEPTO            NUMERIC(9,0) NOT NULL,
+       DESC_DEPTO           VARCHAR(20),
+       PRIMARY KEY (COD_DEPTO)
+);
+
+
+CREATE TABLE GC_FUNCIONARIO (
+       COD_FUNC             NUMERIC(9,0) NOT NULL,
+       COD_DEPTO            NUMERIC(9,0),
+       NOME_FUNC            VARCHAR(50),
+       FONE1                VARCHAR(15),
+       FONE2                VARCHAR(15),
+       RESPONSAVEL          VARCHAR(20),
+       EMAIL_FUNC           VARCHAR(50),
+       APELIDO_FUNC         VARCHAR(50),
+       SENHA_FUNC           VARCHAR(50),
+       NIVEL_FUNC           VARCHAR(1),
+       PRIMARY KEY (COD_FUNC), 
+       FOREIGN KEY (COD_DEPTO)
+                             REFERENCES GC_DEPARTAMENTO
+);
+
+
+CREATE TABLE GC_CLIENTE (
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE_ALT      NUMERIC(9,0),
+       CNPJCPF_CLI          VARCHAR(18),
+       TIPO_CLI             VARCHAR(1),
+       NOME_CLI             VARCHAR(50),
+       FANTASIA_CLI         VARCHAR(50),
+       ENDERECO_CLI         VARCHAR(50),
+       END_COB_CLI          VARCHAR(60),
+       COMPLEMENTO_CLI      VARCHAR(20),
+       BAIRRO_CLI           VARCHAR(20),
+       CIDADE_CLI           VARCHAR(20),
+       UF_CLI               VARCHAR(2),
+       FONE1_CLI            VARCHAR(15),
+       FONE2_CLI            VARCHAR(15),
+       FONE3_CLI            VARCHAR(15),
+       EMAIL_CLI            VARCHAR(50),
+       CONTATO_CLI          VARCHAR(20),
+       ATIVO_CLI            VARCHAR(1) NOT NULL,
+       STATUS_CLI           VARCHAR(1),
+       VALOR_MENSAL         DOUBLE PRECISION,
+       DIA_VENCTO           NUMERIC(2,0),
+       CEP_CLI              VARCHAR(9),
+       PRIMARY KEY (COD_CLIENTE)
+);
+
+
+CREATE TABLE GC_ATENDIMENTO (
+       COD_ATENDIMENTO      NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       DESCRICAO_ATEND      VARCHAR(1000),
+       STATUS_ATEND         VARCHAR(1),
+       PRIORIDADE_ATEND     VARCHAR(1),
+       DT_ATEND             TIMESTAMP,
+       PRIMARY KEY (COD_ATENDIMENTO, COD_CLIENTE), 
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE
+);
+
+
+CREATE TABLE GC_OCORRENCIA (
+       COD_OCORRENCIA       NUMERIC(9,0) NOT NULL,
+       COD_ATENDIMENTO      NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       COD_FUNC             NUMERIC(9,0),
+       DT_OCORRENCIA        TIMESTAMP NOT NULL,
+       STATUS_OCORR         VARCHAR(1),
+       COD_FUNC_TRANS       NUMERIC(9,0),
+       DT_FECHAMENTO_OCORR  TIMESTAMP,
+       DESCRICAO_OCORR      VARCHAR(255),
+       PRIMARY KEY (COD_OCORRENCIA), 
+       FOREIGN KEY (COD_FUNC_TRANS)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_FUNC)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_ATENDIMENTO, COD_CLIENTE)
+                             REFERENCES GC_ATENDIMENTO
+);
+
+
+CREATE TABLE GC_VISITA (
+       COD_VISITA           NUMERIC(9,0) NOT NULL,
+       COD_FUNC             NUMERIC(9,0) NOT NULL,
+       DT_VISITA            TIMESTAMP NOT NULL,
+       DT_PREV_RET          TIMESTAMP,
+       MOTIVO_VISITA        VARCHAR(1000),
+       OBS_VISITA           VARCHAR(255),
+       CONTATO_VISITA       VARCHAR(50) NOT NULL,
+       STATUS_VISITA        VARCHAR(1),
+       COD_FUNC_CAD_VIS     NUMERIC(9,0),
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       PRIMARY KEY (COD_VISITA, COD_FUNC),
+       FOREIGN KEY (COD_FUNC)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_FUNC_CAD_VIS)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE
+);
+
+
+CREATE TABLE GC_LIGACAO (
+       COD_LIGACAO          NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0),
+       COD_CONTATO          NUMERIC(9,0),
+       COD_FUNC             NUMERIC(9,0),
+       COD_DEPTO            NUMERIC(9,0),
+       DESC_LIG             VARCHAR(100),
+       PRIORIDADE_LIG       VARCHAR(1),
+       STATUS_LIG           VARCHAR(1),
+       DT_PEDIDO_LIG        TIMESTAMP NOT NULL,
+       DT_FECHAMENTO_LIG    TIMESTAMP,
+       FONE1                VARCHAR(15),
+       FONE2                VARCHAR(15),
+       FONE3                VARCHAR(15),
+       FONE4                VARCHAR(15),
+       CONTATO              VARCHAR(50),
+       RAMAL1               VARCHAR(4),
+       RAMAL2               VARCHAR(4),
+       RAMAL3               VARCHAR(4),
+       RAMAL4               VARCHAR(4),
+       COD_FUNC_CAD         NUMERIC(9,0),
+       OBS_LIG              VARCHAR(255),
+       QUEMFALA             VARCHAR(1),
+       PRIMARY KEY (COD_LIGACAO), 
+       FOREIGN KEY (COD_CONTATO)
+                             REFERENCES GC_AGENDA, 
+       FOREIGN KEY (COD_FUNC)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE, 
+       FOREIGN KEY (COD_FUNC_CAD)
+                             REFERENCES GC_FUNCIONARIO, 
+       FOREIGN KEY (COD_DEPTO)
+                             REFERENCES GC_DEPARTAMENTO
+);
+
+CREATE INDEX XIF23GC_LIGACAO ON GC_LIGACAO
+(
+       COD_CONTATO
+);
+
+
+CREATE TABLE GC_DOCUMENTO (
+       COD_DOCTO            NUMERIC(9,0) NOT NULL,
+       COD_DEPTO            NUMERIC(9,0),
+       DESC_DOCTO           VARCHAR(50),
+       COMPETENCIA_DOCTO    VARCHAR(1),
+       DIAS_DOCTO           NUMERIC(2,0),
+       STATUS_DIAS_DOCTO    VARCHAR(1),
+       PRIMARY KEY (COD_DOCTO), 
+       FOREIGN KEY (COD_DEPTO)
+                             REFERENCES GC_DEPARTAMENTO
+);
+
+
+CREATE TABLE GC_PROTOCOLO (
+       COD_PROTOCOLO        NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       OBS_PROTOCOLO        VARCHAR(255),
+       DT_EMISSAO_PROTO     TIMESTAMP,
+       DT_ENTREGA_PREV      TIMESTAMP,
+       DT_ENTREGA_PROTO     TIMESTAMP,
+       STATUS_ENTREGA       VARCHAR(1),
+       COD_FUNC             NUMERIC(9,0),
+       PRIMARY KEY (COD_PROTOCOLO),
+       FOREIGN KEY (COD_CLIENTE) REFERENCES GC_CLIENTE,
+       FOREIGN KEY (COD_FUNC)    REFERENCES GC_FUNCIONARIO
+);
+
+CREATE TABLE GC_DOCUMENTO_EMITIDO (
+       COD_PROTOCOLO        NUMERIC(9,0) NOT NULL,
+       COD_DOCTO_EMI        NUMERIC(9,0) NOT NULL,
+       COD_DOCTO            NUMERIC(9,0) NOT NULL,
+       OBS_DOCTO_EMI        VARCHAR(30),
+       PRIMARY KEY (COD_PROTOCOLO, COD_DOCTO_EMI),
+       FOREIGN KEY (COD_DOCTO)   REFERENCES GC_DOCUMENTO
+);
+
+
+CREATE TABLE GC_EMAIL (
+       COD_EMAIL            NUMERIC(9,0) NOT NULL,
+       COD_FUNC             NUMERIC(9,0),
+       ASSUNTO_EMAIL        VARCHAR(255),
+       DT_EMAIL             TIMESTAMP,
+       CC_EMAIL             VARCHAR(255),
+       TEXTO_EMAIL          VARCHAR(255),
+       ARQUIVOS_EMAIL       VARCHAR(255),
+       PRIMARY KEY (COD_EMAIL), 
+       FOREIGN KEY (COD_FUNC)
+                             REFERENCES GC_FUNCIONARIO
+);
+
+CREATE UNIQUE INDEX XPKGC_EMAIL ON GC_EMAIL
+(
+       COD_EMAIL
+);
+
+CREATE INDEX XIF16GC_EMAIL ON GC_EMAIL
+(
+       COD_FUNC
+);
+
+
+CREATE TABLE GC_EMAIL_CLI (
+       COD_EMAIL            NUMERIC(9,0) NOT NULL,
+       EMAIL_CLI_CONT       NUMERIC(9,0) NOT NULL,
+       COD_CLIENTE          NUMERIC(9,0),
+       COD_CONTATO          NUMERIC(9,0),
+       PRIMARY KEY (email_cli_cont),
+       FOREIGN KEY (COD_CONTATO)
+                             REFERENCES GC_AGENDA,
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE,
+       FOREIGN KEY (COD_EMAIL)
+                             REFERENCES GC_EMAIL
+);
+
+CREATE UNIQUE INDEX XPKGC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       email_cli_cont
+);
+
+CREATE INDEX XIF24GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_CONTATO
+);
+
+CREATE INDEX XIF18GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_EMAIL
+);
+
+CREATE INDEX XIF19GC_EMAIL_CLI ON GC_EMAIL_CLI
+(
+       COD_CLIENTE
+);
+
+
+CREATE TABLE Emissao_Docto (
+       COD_CLIENTE          NUMERIC(9,0) NOT NULL,
+       COD_DOCTO            NUMERIC(9,0) NOT NULL,
+       PRIMARY KEY (COD_CLIENTE, COD_DOCTO),
+       FOREIGN KEY (COD_DOCTO)
+                             REFERENCES GC_DOCUMENTO,
+       FOREIGN KEY (COD_CLIENTE)
+                             REFERENCES GC_CLIENTE
+);
+
+CREATE UNIQUE INDEX XPKEmissao_Docto ON Emissao_Docto
+(
+       COD_CLIENTE,
+       COD_DOCTO
+);
+
+CREATE INDEX XIF20Emissao_Docto ON Emissao_Docto
+(
+       COD_CLIENTE
+);
+
+CREATE INDEX XIF21Emissao_Docto ON Emissao_Docto
+(
+       COD_DOCTO
+);
+
+
+
